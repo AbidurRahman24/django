@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>This is Home</title>
+</head>
+
+<body>
+  <h1>This is inside Home</h1>
+  <h1>Hello, {{author }}!</h1>
+
+  <p>Age: {{age }}</p>
+
+  <p>{{author|upper}}</p>
+  <p>Course len: {{ courses | length }}</p>
+
+  <!-- Add -->
+  <!-- Display updated fees -->
+  {% for course in courses %}
+  <h3>{{ course.fee }}</h3>
+  {% endfor %}
+  <!-- addslashes  -->
+  <h1>{{ author|addslashes }}</h1>
+  <!-- capFirst -->
+  <p>Name: {{name|capfirst }}</p>
+  <!-- center -->
+  <h1>{{ name|center:20 }}</h1>
+  <!-- cut -->
+  <h1>{{ name|cut:"loy" }}</h1>
+  <!-- date -->
+  <h1>Time: {{ birthday | date:"D d M Y" }}</h1>
+  <!-- defult -->
+  {% for x in colors %}
+  <p>{{ x|default:"nocolor" }}</p>
+  {% endfor %}
+<!-- Write color names, but wite "nocolor" if the value is None: -->
+  {% for x in colors %}
+  <h1>{{ x|default_if_none:"nocolor" }}</h1>
+{% endfor %}
+<!-- Sort the dictionary by fee: -->
+{% for x in cars|dictsort:"year" %}
+  <p>{{ x.year }} {{ x.brand }} {{ x.model }}.</p>
+{% endfor %}
+<!-- Sort the dictionary descending by year: -->
+{% for x in cars|dictsortreversed:"year" %}
+  <p>{{ x.year }} {{ x.brand }} {{ x.model }}.</p>
+{% endfor %}
+
+{% if age|divisibleby:5 %}
+<h1>Yes, it is!</h1>
+{%  endif %}
+
+{% comment %}  {% endcomment %}
+{% autoescape off %}
+  <h1>{{ heading|escape }}</h1>
+  <h1>{{ heading }}</h1>
+{% endautoescape %}
+
+<h1>{{ size|filesizeformat }}</h1>
+<h1>{{fruits|first}}</h1>
+<h1>{{mynumber|floatformat:2}}</h1>
+<!-- Join all items in a list into a string, using a hash character as separator:: -->
+<h1>{{ fruits|join:"#" }}</h1>
+{% comment %} Add the line number befor each line: {% endcomment %}
+{{ mytext|linenumbers }}
+<h1>{{ name|lower }}</h1>
+<h1>{{ name|make_list }}</h1>
+<h1>My favorite fruit is {{ fruits|random }}</h1>
+<h1>{{ fruits|slice:"1:4" }}</h1>
+<p>{{ text|slugify }}</p>
+
+{% comment %} time since {% endcomment %}
+<h1>{{ mybirthdate|timesince:mydate }}</h1>
+{% comment %} Convert a text into using all capitalized words: {% endcomment %}
+<p>{{ mytext|title }}</p>
+{{ fruits|unordered_list }}
+{{ mytext | wordcount }}
+{{'Happy coding' | truncatechars:6}}
+{% for x in arr %}
+  <h1>You have {{ x }} life{{ x|pluralize }} left.</h1>
+{% endfor %}
+</body>
+
+</html>
