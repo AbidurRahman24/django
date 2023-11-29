@@ -1,14 +1,8 @@
+{% extends 'base.html' %}
 {% load static%}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home </title>
-</head>
-<body>
-    <p>this is home templates</p>
-    <img src ="{%static 'football.png' %}" alt = "Bird Image 1" />
-    <img src="{% static 'football.png' %}" alt="football">
-</body>
-</html>
+{% block content %}
+
+<p>this is home templates</p>
+
+<img src="{% static 'football.png' %}" alt="football">
+{% endblock%}
