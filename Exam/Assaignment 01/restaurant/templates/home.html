@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<h1 class="text-center">Home</h1>
+{% endblock title %}
 
 {% block content %}
-{{block.super}}
-<h1>This is home page</h1>
+<div class="container my-5">
+    <div class="row h-100 align-items-center bg-light " style="height: 100vh;">
+        <div class="col-lg-6 ">
+            <div class="box p-5">
+                <h3 class="title">Best Quality Food</h3>
+                <p>Food is a sensory masterpiece, a universal language connecting cultures. Explore diverse tastes,
+                    celebrate traditions, and savor life's flavorful moments.</p>
+                <button type="button" class="btn btn-info">BUY NOW</button>
+            </div>
+        </div>
+        <div class="col-lg-6">
 
+            <img src="{%static 'images/food.jpg' %}" class="img-fluid w-100" alt="home image">
+        </div>
+    </div>
+</div>
 {% endblock %}

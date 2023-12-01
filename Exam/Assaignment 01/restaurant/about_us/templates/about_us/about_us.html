@@ -1,1 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% block title %}
+<h1 class="text-center my-3">About us</h1>
+{% endblock title %}
+
+{% block content %}
+<div class="container my-5" >
+    <div class="row align-items-center  ">
+        <div class="col-lg-6 ">
+            <div class="box p-5 ">
+                
+                <p class="text">WE BELIEVE THAT GOOD FOOD SHOULD BE BOTH DELICIOUS AND NUTRITIOUS.</p>
+                
+            </div>
+        </div>
+        <div class="col-lg-6">
+
+            <img src="{%static 'images/food2.jpg' %}" class="img-fluid w-100 h-100"  alt="about image">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
