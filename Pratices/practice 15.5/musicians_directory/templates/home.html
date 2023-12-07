@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- home.html -->
+<table class="table">
+    <thead>
+      <tr>
+        <th>Musician ID</th>
+        <th>Musician Name</th>
+        <th>Musician Email</th>
+        <th>Album ID</th>
+        <th>Album Name</th>
+        <th>Release Date</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        
+      {% for albums in album %}
+          <tr>
+            <td>{{ albums.musician.id }}</td>
+            <td><a href="{% url 'edit_musician' albums.musician.id %}">{{ albums.musician.first_name }} </a> </td>
+            <td>{{ albums.musician.email }}</td>
+            <td>{{ albums.musician.id }}</td>
+            <td>{{ albums.title }}</td>
+            <td>{{ albums.release_date }}</td>
+            <td>{{ albums.rating }}</td>
+            <td>
+              <a href="{% url 'edit_album' albums.id %}" class="btn btn-warning">Edit</a>
+              <a href="{% url 'delete_musician' albums.musician.id %}" class="btn btn-warning">Delete</a>
+            </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock %}
