@@ -48,4 +48,4 @@ class contactForm(forms.Form):
    GenericIPAddressField = forms.GenericIPAddressField( )
    RegexField = forms.RegexField(regex = "G.*s") 
    SlugField = forms.SlugField(max_length = 200) 
-   URLField = forms.URLField( ) 
+   URLField = forms.URLField() 
