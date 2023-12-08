@@ -6,10 +6,10 @@
   
   <div class="col-sm-3">
     <div class="card m-2">
-      <div class="card-body">
-          <p class="card-text">{{show.id}}</p>
-        <h5 class="card-title">{{show.taskTitle}}</h5>
-        <p class="card-text">{{show.taskDescription}}</p>
+      <div class="card-body" >
+          <p class="card-text">Task ID: {{show.id}}</p>
+        <h5 class="card-title">Task Title: {{show.taskTitle}}</h5>
+        <p class="card-text"><span class="font-weight-bold">Task Description:</span> {{show.taskDescription}}</p>
         <p>
            
           Category : {% for cat in show.category.all %} 
