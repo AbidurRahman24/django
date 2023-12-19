@@ -1,3 +1,5 @@
+from typing import Any
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from . import forms
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
@@ -6,6 +8,8 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 from post.models import Post
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
 # Create your views here.
 
 def register(request):
@@ -15,7 +19,6 @@ def register(request):
             register_form.save()
             messages.success(request, 'Account Created Successfully')
             return redirect('register')
-    
     else:
         register_form  = forms.RegistrationForm()
     return render(request, 'register.html', {'form' : register_form, 'type' : 'Register'})
@@ -38,7 +41,28 @@ def user_login(request):
     else:
         form = AuthenticationForm()
         return render(request, 'register.html', {'form' : form, 'type' : 'Login'})
+
+
+class UserLoginView(LoginView):
+    template_name = 'register.html'
+
+    def get_success_url(self):
+        return reverse_lazy('profile')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Logged in Successfully')
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.success(self.request, 'Logged in information incorrect')
+        return super().form_invalid(form)
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type'] = 'login'
+        return context
+
+
 @login_required
 def profile(request):
     data = Post.objects.filter(author = request.user)
@@ -77,3 +101,4 @@ def pass_change(request):
 def user_logout(request):
     logout(request)
     return redirect('user_login')
+
