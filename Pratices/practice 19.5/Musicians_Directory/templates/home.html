@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- home.html -->
+<table class="table">
+    <thead>
+      <tr>
+        <th>Musician ID</th>
+        <th>Musician Name</th>
+        <th>Musician Email</th>
+        <th>Album ID</th>
+        <th>Album Name</th>
+        <th>Release Date</th>
+        <th>Rating</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+
+        
+      {% for albums in album %}
+          <tr>
+            <td>{{ albums.musician.id }}</td>
+            </td>
+            <td>{{ albums.musician.email }}</td>
+            <td>{{ albums.musician.id }}</td>
+            <td>{{ albums.title }}</td>
+            <td>{{ albums.release_date }}</td>
+            <td>{{ albums.rating }}</td>
+            <td>
+              
+            </td>
+          </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+{% endblock %}
