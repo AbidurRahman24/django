@@ -1,0 +1,21 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %} 
+    <div class="container">
+        <div class="row " style="height: 70vh;">
+            <div class="col-md-6">
+                <div class="d-flex flex-column justify-content-center  h-100">
+                    <p>Shop Online. Pickup Today. It’s Fast, Simple and Easy. Learn More.</p>
+                    <h1>Fast, Simple and Easy</h1>
+                    <p>Selling cars requires finesse in communication, product knowledge, and understanding customer needs. Successful salespeople build trust, highlight vehicle features, and navigate negotiations to close deals. In this dynamic industry, adaptability and a passion for automobiles are essential. Connecting with customers and delivering exceptional service contribute to long-term success in car sales</p>
+                    <button class="btn btn-warning" style="width: 150px;">Buy Now</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-column justify-content-center  h-100">
+                    <img src ="{%static 'images/car11.jpg' %}" style="width: 100%;" alt = "Car 1" />
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
