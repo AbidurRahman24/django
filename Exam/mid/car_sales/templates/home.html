@@ -17,16 +17,16 @@
         </div>
         <div class="col-md-6">
             <div class="d-flex flex-column justify-content-center  h-100">
-                <img src="{%static 'images/car11.jpg' %}" style="width: 100%;" alt="Car 1" />
+                <img src="{%static 'images/car10.jpg' %}" style="width: 100%;" alt="Car 1" />
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 d-flex ">
             <h5>All Brand</h5>
             {% for cat in brand %}
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="brand" id="{{cat.id}}" />
+                <input class="form-check-input" name="brand" id="{{cat.id}}" />
                 <label class="form-check-label" for="{{cat.id}}">
 
                     <a href="{% url 'brand_wise_post' cat.slug %}"
@@ -37,29 +37,33 @@
         </div>
     </div>
     <div class="row">
-        
+
         <h4>{{data | length}} results found</h4>
         <div class="d-flex flex-wrap pt-5">
-            {% for post in data %}
+            {% for car in data %}
             <div class="col-sm-3">
-              <div class="card m-2">
-                <div class="card-body">
-                    <img src="{{post.image.url}}" class="card-img-top" alt="...">
-                  <h5 class="card-title"><a  class="text-decoration-none text-dark">{{post.name}}</a></h5>
-                  <p class="card-text">{{post.description |truncatewords:10}}</p>
-                  <p>Author : {{post.author.first_name}} {{post.author.last_name}}</p>
-                  <p>
-                    Category : {% for cat in post.category.all %}
-                    <button class="btn btn-primary btn-sm m-2" disabled>
-                      {{cat.name}}
-                    </button>
-                    {% endfor %}
-                  </p>
+                <div class="card m-2">
+                    <div class="card-body">
+                        <div>
+                            <img src="{{car.image.url}}" class="card-img-top" alt="...">
+                        </div>
+                        <div class="my-3">
+                            <h5 class="card-title"><a class="text-decoration-none text-dark">{{car.name}}</a></h5>
+                            <p class="card-text">{{car.description |truncatewords:10}}</p>
+                            <p>Price: ${{car.price}}</p>
+                            <button class="btn btn-info"><a href="{% url 'detail_car' car.id %}"
+                                    class="text-decoration-none text-dark">View Details</a></button>
+                            {% if request.user.is_authenticated %}
+                            <a href="{% url 'edit_post' car.id %}" class="btn btn-warning">Edit</a>
+                            <a href="{% url 'delete_post' car.id %}" class="btn btn-danger">Delete</a>
+                            {% endif %}
+                        </div>
+
+                    </div>
                 </div>
-              </div>
             </div>
             {% endfor %}
-          </div>
+        </div>
     </div>
 </div>
 {% endblock %}
