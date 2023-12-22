@@ -19,4 +19,3 @@ def add_car_brand(request):
         brand_form = forms.BrandForm()
     # print(album_form)
     return render(request, 'add_brand.html', {'form' : brand_form})
-    return render(request, )
