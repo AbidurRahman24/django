@@ -13,12 +13,12 @@
       crossorigin="anonymous"
     />
 
-    <title>Hello, world!</title>
+    <title>Boxcar</title>
   </head>
   <body >
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="{% url 'homepage' %}">Django Blog</a>
+        <a class="navbar-brand" href="{% url 'homepage' %}">Boxcar</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -70,6 +70,13 @@
               </li>
               <li class="nav-item mx-3">
                 <a
+                  class="nav-link btn btn-warning text-dark"
+                  href="{% url 'cart:view_cart' %}"
+                  >View Cart</a
+                >
+              </li>
+              <li class="nav-item mx-3">
+                <a
                   class="nav-link btn btn-danger text-white"
                   href="{% url 'user_logout' %}"
                   >Logout</a
@@ -80,7 +87,7 @@
                 <a
                   class="nav-link btn btn-warning text-dark"
                   href="{% url 'register' %}"
-                  >Register</a
+                  >Signup</a
                 >
               </li>
               <li class="nav-item">
