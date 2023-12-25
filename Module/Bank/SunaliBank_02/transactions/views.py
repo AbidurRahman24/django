@@ -93,18 +93,16 @@ class WithdrawMoneyView(TransactionCreateMixin):
     
 class LoanRequestView(TransactionCreateMixin):
     form_class = LoanRequestForm
-    title = "Request for Loan"
+    title = 'Request For Loan'
 
     def get_initial(self):
-        initial = {'Transection_type': LOAN}
+        initial = {'transaction_type': LOAN}
         return initial
-    
+
     def form_valid(self, form):
         amount = form.cleaned_data.get('amount')
         current_loan_count = Transaction.objects.filter(
-            account=self.request.user.account,
-            transaction_type=3,
-            loan_approve=True).count()
+            account=self.request.user.account,transaction_type=3,loan_approve=True).count()
         if current_loan_count >= 3:
             return HttpResponse("You have cross the loan limits")
         messages.success(
@@ -114,7 +112,6 @@ class LoanRequestView(TransactionCreateMixin):
 
         return super().form_valid(form)
     
-
 class TransactionReportView(LoginRequiredMixin, ListView):
     template_name = 'transactions/transaction_report.html'
     model = Transaction
@@ -147,8 +144,8 @@ class TransactionReportView(LoginRequiredMixin, ListView):
         })
 
         return context
+    
         
-
 class PayLoanView(LoginRequiredMixin, View):
     def get(self, request, loan_id):
         loan = get_object_or_404(Transaction, id=loan_id)
@@ -183,4 +180,5 @@ class LoanListView(LoginRequiredMixin,ListView):
     def get_queryset(self):
         user_account = self.request.user.account
         queryset = Transaction.objects.filter(account=user_account,transaction_type=3)
+        print(queryset)
         return queryset
