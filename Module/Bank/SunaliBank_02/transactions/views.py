@@ -182,3 +182,27 @@ class LoanListView(LoginRequiredMixin,ListView):
         queryset = Transaction.objects.filter(account=user_account,transaction_type=3)
         print(queryset)
         return queryset
+    
+# @login_required
+# def money_transfer(request, to_user_id):
+#     to_user = get_object_or_404(User, id=to_user_id)
+
+#     if request.method == 'POST':
+#         form = MoneyTransferForm(request.POST)
+#         if form.is_valid():
+#             transfer = form.save(commit=False)
+#             transfer.from_user = request.user
+#             transfer.to_user = to_user
+#             transfer.save()
+
+#             # Perform any additional logic (e.g., update account balances)
+
+#             return HttpResponse("Money transfer successful.")
+#     else:
+#         form = MoneyTransferForm()
+
+#     context = {
+#         'form': form,
+#         'to_user': to_user,
+#     }
+#     return render(request, 'money_transfer.html', context)
