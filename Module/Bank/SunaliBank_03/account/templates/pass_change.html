@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<form style="width:50% ; margin : auto" method="post">
+    <h1>Change Your Password From Here</h1>
+    {% csrf_token %}
+    
+    {{form.as_p}}
+
+    <button class="btn btn-warning mb-5">Submit</button>
+</form>
+
+{% endblock %}
