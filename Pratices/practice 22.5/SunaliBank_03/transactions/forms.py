@@ -1,5 +1,6 @@
 from django import forms
 from .models import Transaction,Account
+from django.contrib.auth.models import User
 class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
@@ -33,6 +34,7 @@ class DepositForm(TransactionForm):
 
 
 class WithdrawForm(TransactionForm):
+
     def clean_amount(self):
         account = self.account
         min_withdraw_amount = 500
@@ -54,6 +56,7 @@ class WithdrawForm(TransactionForm):
                 f'You have {balance} $ in your account. '
                 'You can not withdraw more than your account balance'
             )
+
         return amount
 
 
@@ -63,15 +66,7 @@ class LoanRequestForm(TransactionForm):
         amount = self.cleaned_data.get('amount')
 
         return amount
-    
 
-# class MoneyTransferForm(forms.ModelForm):
-#     to_user = forms.IntegerField(label='To User ID')
-#     amount = forms.DecimalField(label='Amount', decimal_places=2, max_digits=12)
-
-# #     class Meta:
-# #         model = Transaction
-# #         fields = ['to_user', 'amount']
 
 class MoneyTransferForm(forms.ModelForm):
     balance = forms.DecimalField()
@@ -79,3 +74,8 @@ class MoneyTransferForm(forms.ModelForm):
     class Meta:
         model = Account
         fields = ['user', 'balance', 'destination_username']
+    def clean_destination_username(self):
+        destination_username = self.cleaned_data.get('destination_username')
+        if not User.objects.filter(username=destination_username).exists():
+            raise forms.ValidationError('Destination username not found.')
+        return destination_username
