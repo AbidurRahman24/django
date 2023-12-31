@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from . import forms
 from . import models
-from django.views.generic import CreateView
+from django.views.generic import CreateView,DetailView
 from django.urls import reverse_lazy
 # Create your views here.
 
@@ -25,3 +25,27 @@ class AddPostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+ 
+class DetailBooktView(DetailView):
+    model = models.Book
+    pk_url_kwarg = 'id'
+    template_name = 'book_details.html'
+
+    def post(self, request, *args, **kwargs):
+        comment_form = forms.ReviewForm(data=self.request.POST)
+        post = self.get_object()
+        if comment_form.is_valid():
+            new_comment = comment_form.save(commit=False)
+            new_comment.post = post
+            new_comment.save()
+        return self.get(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        post = self.object # post model er object ekhane store korlam
+        comments = post.comments.all()
+        comment_form = forms.ReviewForm()
+        
+        context['comments'] = comments
+        context['comment_form'] = comment_form
+        return context

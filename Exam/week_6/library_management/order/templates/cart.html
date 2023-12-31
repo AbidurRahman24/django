@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Your Shopping Cart</h1>
+  {{request.user.account.account_no}}
+  {{request.user.account.balance}}
+  {% for cart_item in cart_items %}
+    {{ cart_item.created_at }}
+    <!-- Other fields or content related to each cart item -->
+{% endfor %}
+
+<div class="container">
+  <div class="row">
+    {% for item in cart_items %}
+      <div class="col-md-4 mb-4">
+        <div class="card" style="width: 18rem;">
+          <img src="{{ item.product.image.url }}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{ item.product.title }}</h5>
+            <p class="card-text">Quantity: ({{ item.quantity }})</p>
+            <p>Price: <span class="text-bold">Price: ${{ item.product.borrowing_price }}</span> </p>
+            <button class="btn btn-danger">
+              <a href="{% url 'remove_from_cart' item.id %}" class="text-white text-decoration-none">Return Book</a>
+            </button>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-md-12">
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Your cart is empty.</h5>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <h3>Total Price: ${{ total_price }}</h3>
+
+  <a class="text-decoration-none text-white btn btn-primary" href="{% url 'home' %}">Continue Shopping</a>
+</div>
+{% endblock %}
