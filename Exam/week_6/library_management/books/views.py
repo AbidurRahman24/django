@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
 from . import forms
 from . import models
-from django.views.generic import CreateView,DetailView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
+from django.views.generic import CreateView,UpdateView,DeleteView,DetailView
 from django.urls import reverse_lazy
 # Create your views here.
-
+@method_decorator(login_required, name='dispatch')
 def add_book(request):
     if request.method == 'POST': # user post request koreche
         book_form = forms.BookForm(request.POST)
@@ -17,6 +19,8 @@ def add_book(request):
         book_form = forms.BookForm()
     return render(request, 'add_book.html', {'form' : book_form})
 
+
+@method_decorator(login_required, name='dispatch')
 class AddPostCreateView(CreateView):
     model = models.Book
     form_class = forms.BookForm
@@ -25,7 +29,9 @@ class AddPostCreateView(CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
- 
+    
+
+@method_decorator(login_required, name='dispatch')
 class DetailBooktView(DetailView):
     model = models.Book
     pk_url_kwarg = 'id'
@@ -49,3 +55,18 @@ class DetailBooktView(DetailView):
         context['comments'] = comments
         context['comment_form'] = comment_form
         return context
+    
+@method_decorator(login_required, name='dispatch')
+class EditBookView(UpdateView):
+    model = models.Book
+    form_class = forms.BookForm
+    template_name = 'add_book.html'
+    pk_url_kwarg = 'id'
+    success_url = reverse_lazy('home')
+
+@method_decorator(login_required, name='dispatch')
+class DeleteBookView(DeleteView):
+    model = models.Book
+    template_name = 'delete.html'
+    success_url = reverse_lazy('home')
+    pk_url_kwarg = 'id'

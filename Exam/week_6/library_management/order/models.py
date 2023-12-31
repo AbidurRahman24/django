@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class CartItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_order')
+    # bank = models.ForeignKey(UserBankAccount, on_delete=models.CASCADE, related_name='bankinfo')
     product = models.ForeignKey(Book, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     total_price = models.DecimalField(max_digits=10, decimal_places=2)
