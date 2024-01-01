@@ -81,7 +81,7 @@ class WithdrawMoneyView(TransactionCreateMixin):
         return initial
 
     def form_valid(self, form):
-        if self.request.user.account.is_bankrupt != True:
+        if self.request.user.account.is_bankrupt:
             messages.error(
             self.request,
             f'Bank is Bankrupt'
