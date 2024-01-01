@@ -1,6 +1,8 @@
 from django import forms
 from .models import Transaction,Account
 from django.contrib.auth.models import User
+
+
 class TransactionForm(forms.ModelForm):
     class Meta:
         model = Transaction
@@ -34,7 +36,6 @@ class DepositForm(TransactionForm):
 
 
 class WithdrawForm(TransactionForm):
-
     def clean_amount(self):
         account = self.account
         min_withdraw_amount = 500
@@ -56,7 +57,6 @@ class WithdrawForm(TransactionForm):
                 f'You have {balance} $ in your account. '
                 'You can not withdraw more than your account balance'
             )
-
         return amount
 
 
@@ -66,7 +66,6 @@ class LoanRequestForm(TransactionForm):
         amount = self.cleaned_data.get('amount')
 
         return amount
-
 
 class MoneyTransferForm(forms.ModelForm):
     balance = forms.DecimalField()
