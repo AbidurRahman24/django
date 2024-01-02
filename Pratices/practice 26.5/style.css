@@ -1,0 +1,11 @@
+li{
+    list-style: none;
+}
+.dropdown-item{
+    padding: 10px;
+    color: black;
+    background-color: aqua;
+}
+.card-img{
+    width: 300px;
+}
