@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="container">
+        <ul id="category" class="d-flex gap-3">
+            
+        </ul>
+        <ul id="product-container" class="row">
+            <!-- Product will be dynamically added here -->
+        </ul>
+        <h1 class="text-center m-5">User</h1>
+        <ul id="user-container" class="row">
+            <!-- user will be dynamically added here -->
+        </ul>
+        Add a new user
+       <div class="row">
+        <div class="col-md-3">
+                <ul>
+                    <li>Register</li>
+                    <li><a href="">login</a></li>
+                </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="register-container">
+                <div class="col-md-6">
+                  <h1 class="title mt-5">Please Registration</h1>
+                  <form action="" onsubmit="handleRegistration(event)">
+                    <p id="error" class="text-danger"></p>
+                    <input
+                      id="username"
+                      type="text"
+                      class="input"
+                      placeholder="username"
+                      required
+                    />
+                    <input
+                      id="first_name"
+                      type="text"
+                      class="input"
+                      placeholder="First Name"
+                      required
+                    />
+                    <input
+                      id="last_name"
+                      type="text"
+                      class="input"
+                      placeholder="last Name"
+                      required
+                    />
+          
+                    <input
+                      id="email"
+                      type="email"
+                      class="input"
+                      placeholder="Email"
+                      required
+                    />
+                    <input
+                      id="password"
+                      type="password"
+                      class="input"
+                      placeholder="password"
+                      required
+                    />
+                    <input
+                      id="confirm_password"
+                      type="password"
+                      class="input"
+                      placeholder="Confirm password"
+                      required
+                    />
+                    <input type="submit" class="submit-btn" value="Registration" />
+                    <p><a href="login.html">go to login page</a></p>
+                  </form>
+        </div>
+       </div>
+       <h1 class="title mt-5">Please Login</h1>
+        <form action="">
+          <input
+            value="rahim"
+            id="login-username"
+            type="text"
+            class="input"
+            placeholder="username"
+            required
+          />
+          <input
+            id="login-password"
+            type="password"
+            class="input"
+            placeholder="password"
+            required
+            value="abcd1234%"
+          />
+          <button onclick="handleLogin(event)" class="submit-btn">Login</button>
+          <p><a href="registration.html">go to Registration page</a></p>
+        </form>
+    </div>
+    <a href=""></a>
+    <script src="./script.js"></script>
+    <script src="./proDetails.js"></script>
+    <script src="./auth.js"></script>
+    <script src="./userDetails.js"></script>
+</body>
+</html>
