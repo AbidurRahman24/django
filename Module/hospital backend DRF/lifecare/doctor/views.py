@@ -12,6 +12,13 @@ class DoctorViewset(viewsets.ModelViewSet):
     queryset = models.Doctor.objects.all()
     serializer_class = serializers.DoctorSerializer
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        doctor_id = self.request.query_params.get('doctor_id')
+        if doctor_id:
+            queryset = queryset.filter(id=doctor_id)
+        return queryset
+
 class DesignationViewset(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
