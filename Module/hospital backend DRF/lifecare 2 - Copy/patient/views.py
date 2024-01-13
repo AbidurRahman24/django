@@ -17,6 +17,8 @@ from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 from django.shortcuts import redirect
 # Create your views here.
+from django.contrib import messages
+
 
 class PatientViewset(viewsets.ModelViewSet):
     """
@@ -47,8 +49,35 @@ class UserRegistrationApiView(APIView):
             email.send()
             return Response("Check your mail for confirmation")
         return Response(serializer.errors)
-        
 
+
+class UserloginApiView(APIView):
+    def post(self, request):
+        serializer = serializers.UserLoginSerializer(data = self.request.data)
+        if serializer.is_valid():
+            username = serializer.validated_data['username']
+            password = serializer.validated_data['password']
+
+            user = authenticate(username = username, password=password)
+
+            if user:
+                token,_ = Token.objects.get_or_create(user = user)
+                print(token)
+                print(_)
+                login(request, user)
+                return Response({'token': token.key, 'user_id' : user.id})
+            else:
+                return Response({"error" : "invalid User"})
+        else:
+            return Response(serializers.errors)
+        
+        
+class UserLogoutView(APIView):
+    def get(self, request):
+        request.user.auth_token.delete()
+        logout(request)
+        messages.success(request, 'You have been successfully logged out.')
+        return redirect('login')
 
 def activate(request, uid64, token):
     try: # Error handling kortechi. uid, user nao thakte pare tar mane sekhan theke error asar somvabona ache

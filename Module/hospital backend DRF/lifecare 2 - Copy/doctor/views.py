@@ -4,6 +4,8 @@ from rest_framework import viewsets
 from . import models
 from . import serializers
 # Create your views here.
+from rest_framework.permissions import IsAuthenticated,IsAuthenticatedOrReadOnly
+from rest_framework.permissions import BasePermission
 
 class DoctorViewset(viewsets.ModelViewSet):
     """
@@ -37,6 +39,7 @@ class AvailableTimeViewset(viewsets.ModelViewSet):
     """
     This viewset automatically provides `list` and `retrieve` actions.
     """
+    permission_classes = [IsAuthenticatedOrReadOnly]
     queryset = models.AvailableTime.objects.all()
     serializer_class = serializers.AvailableTimeSerializer
 
