@@ -3,7 +3,7 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter() # wifi toiri korlam
-router.register('', views.ArticleViewSet) # ekta entena toiri korlam
+router.register('list', views.ArticleViewSet) # ekta entena toiri korlam
 router.register('reviews', views.ReviewViewset)
 
 urlpatterns = [

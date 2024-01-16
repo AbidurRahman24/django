@@ -18,6 +18,10 @@ class ArticleSerializer(serializers.ModelSerializer):
     #     return queryset
         
 class ReviewSerializer(serializers.ModelSerializer):
+    viewer_email = serializers.SerializerMethodField()
     class Meta:
         model = models.Review
         fields = '__all__'
+
+    def get_viewer_email(self, obj):
+        return obj.viewer.user.email
