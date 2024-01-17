@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="..."
+    />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+            <div class="container-fluid">
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+                <a class="navbar-brand" href="#">Sun Express</a>
+                <ul id="nav-container" class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </li>
+                </ul>
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+              </div>
+            </div>
+          </nav>
+          <!-- <ul id="category-container" class="slider-container py-4 d-flex"></ul> -->
+
+</header>
+    <main>
+        <div class="login-container">
+            <div class="col-md-6">
+              <h1 class="title mt-5">Please Registration</h1>
+              <form action="" onsubmit="handleRegistration(event)">
+                <p id="error" class="text-danger"></p>
+                <input
+                  id="username"
+                  type="text"
+                  class="input"
+                  placeholder="username"
+                  required
+                />
+                <input
+                  id="first_name"
+                  type="text"
+                  class="input"
+                  placeholder="First Name"
+                  required
+                />
+                <input
+                  id="last_name"
+                  type="text"
+                  class="input"
+                  placeholder="last Name"
+                  required
+                />
+      
+                <input
+                  id="email"
+                  type="email"
+                  class="input"
+                  placeholder="Email"
+                  required
+                />
+                <input
+                  id="password"
+                  type="password"
+                  class="input"
+                  placeholder="password"
+                  required
+                />
+                <input
+                  id="confirm_password"
+                  type="password"
+                  class="input"
+                  placeholder="Confirm password"
+                  required
+                />
+                <input type="submit" class="submit-btn" value="Registration" />
+                <p><a href="login.html">go to login page</a></p>
+              </form>
+            </div>
+            <div class="col-md-6">
+              <img class="w-100" src="./Images/register.jpg" alt="" />
+            </div>
+          </div>
+    </main>
+
+
+
+    <!-- This is footer -->
+    <footer class="p-5">
+        <div class="container w-75 m-auto row p-5">
+          <div class="col-md-6">
+            <p><small>Copyright © SunExpress. All Rights Reserved</small></p>
+            <h5>Follow US</h5>
+            <div class="icons">
+              <img class="icon" src="./Images/LinkedIn.png" alt="" />
+              <img class="icon" src="./Images/YouTube.png" alt="" />
+              <img class="icon" src="./Images/LinkedIn.png" alt="" />
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h5>Company</h5>
+            <li>ABout</li>
+            <li>Contact us</li>
+            <li>Culture</li>
+            <li>Blog</li>
+          </div>
+          <div class="col-md-3">
+            <h5>Company</h5>
+            <li>ABout</li>
+            <li>Contact us</li>
+            <li>Culture</li>
+            <li>Blog</li>
+          </div>
+        </div>
+        <hr />
+        <p class="text-center mt-3">
+          <small>Copyright © Smartcare. All Rights Reserved</small>
+        </p>
+      </footer>
+
+    <script src="./app.js"></script>
+    <script src="./artDetails.js"></script>
+    <script src="./catDetails.js"></script>
+    <script src="./auth.js"></script>
+</body>
+</html>

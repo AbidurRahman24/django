@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="..."
+  />
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+    
+<header>
+
+</header>
+
+<main>
+
+    <div class="login-container">
+        <div class="col-md-6">
+          <h1 class="title mt-5">Please Login</h1>
+          <form action="">
+            <input
+              value="rahim"
+              id="login-username"
+              type="text"
+              class="input"
+              placeholder="username"
+              required
+            />
+            <input
+              id="login-password"
+              type="password"
+              class="input"
+              placeholder="password"
+              required
+              value="abcd1234%"
+            />
+            <button onclick="handleLogin(event)" class="submit-btn">Login</button>
+            <p><a href="registration.html">go to Registration page</a></p>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <img class="w-100" src="./Images/reg.png" alt="" />
+        </div>
+      </div>
+</main>
+
+<footer class="p-5">
+      <div class="container w-75 m-auto row p-5">
+        <div class="col-md-6">
+          <p><small>Copyright © Smartcare. All Rights Reserved</small></p>
+          <h5>Follow US</h5>
+          <div class="icons">
+            <img class="icon" src="./Images/LinkedIn.png" alt="" />
+            <img class="icon" src="./Images/YouTube.png" alt="" />
+            <img class="icon" src="./Images/LinkedIn.png" alt="" />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <h5>Company</h5>
+          <li>ABout</li>
+          <li>Contact us</li>
+          <li>Culture</li>
+          <li>Blog</li>
+        </div>
+        <div class="col-md-3">
+          <h5>Company</h5>
+          <li>ABout</li>
+          <li>Contact us</li>
+          <li>Culture</li>
+          <li>Blog</li>
+        </div>
+      </div>
+      <hr />
+      <p class="text-center mt-3">
+        <small>Copyright © Smartcare. All Rights Reserved</small>
+      </p>
+    </footer>
+    <!-- this is script -->
+    <script src="./app.js"></script>
+    <script src="./artDetails.js"></script>
+    <script src="./catDetails.js"></script>
+    <script src="./auth.js"></script>
+</body>
+</html>
